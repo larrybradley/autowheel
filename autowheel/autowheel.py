@@ -10,7 +10,7 @@ from fnmatch import fnmatch
 from distutils.version import LooseVersion
 
 import requests
-from yaml import load
+import yaml
 
 from cibuildwheel.__main__ import main as cibuildwheel
 
@@ -184,7 +184,7 @@ def main(platform, output_dir, package, build_existing):
     output_dir = os.path.abspath(output_dir)
 
     with open('autowheel.yml') as f:
-        packages = load(f)
+        packages = yaml.load(f, Loader=yaml.FullLoader)
 
     for package in packages:
 
